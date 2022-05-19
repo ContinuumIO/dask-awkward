@@ -876,6 +876,11 @@ class Array(DaskMethodsMixin, NDArrayOperatorsMixin):
 
         return to_dask_array(self)
 
+    def to_parquet(self, path: str, storage_options: dict = None, **kwargs) -> None:
+        from dask_awkward.parquet import to_parquet
+
+        return to_parquet(path, storage_options=storage_options, **kwargs)
+
 
 def _first_partition(array: Array) -> ak.Array:
     """Compute the first partition of an Array collection.
